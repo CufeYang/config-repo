@@ -1,11 +1,17 @@
+
+#eureka瀹炰緥鍦板潃 灏辨槸鏈嶅姟閮ㄧ讲鐨勬湇鍔″櫒
 eureka:
-  client:
-    service-url:
-       defaultZone:  http://localhost:8761/eureka/
-  #本服务 即该配置服务所运行 的服务器
-  instance:
-    hostname: 127.0.0.1
-    lease-expiration-duration-in-seconds: 9
-    lease-renewal-interval-in-seconds: 1
-    metadataMap:
-      instanceId: ${spring.application.name}:${random.value}
+    instance:
+     # hostname: 10.100.82.134
+      hostname: 127.0.0.1
+      lease-expiration-duration-in-seconds: 2
+      lease-renewal-interval-in-seconds: 1
+      metadataMap:
+       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#娉ㄥ唽涓績
+    client:
+     registerWithEureka: true
+     fetchRegistry: true
+     service-url:
+      #defaultZone: http://10.100.83.18:8761/eureka/
+      defaultZone: http://127.0.0.1:8761/eureka/
