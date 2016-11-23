@@ -1,0 +1,25 @@
+
+#配置中心
+spring:
+  application:
+    name: rabbitMQ-service
+  cloud:
+    config:
+      uri: http://10.100.83.44:8888
+
+
+#eureka实例地址 就是服务部署的服务器
+eureka:
+    instance:
+      hostname: 10.100.82.134
+#      hostname: 127.0.0.1
+      lease-expiration-duration-in-seconds: 2
+      lease-renewal-interval-in-seconds: 1
+      metadataMap:
+       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#注册中心
+    client:
+     registerWithEureka: true
+     fetchRegistry: true
+     service-url:
+      defaultZone: http://10.100.83.18:8761/eureka/
